@@ -1,4 +1,4 @@
-package ru.javarush.module4.projecthibernatefinal.domain;
+package ru.javarush.module4.projecthibernatefinal.entity;
 
 public enum Continent {
     ASIA,

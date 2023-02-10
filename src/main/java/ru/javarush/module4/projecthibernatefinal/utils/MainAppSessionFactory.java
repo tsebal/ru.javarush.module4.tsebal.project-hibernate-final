@@ -3,9 +3,9 @@ package ru.javarush.module4.projecthibernatefinal.utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
-import ru.javarush.module4.projecthibernatefinal.domain.City;
-import ru.javarush.module4.projecthibernatefinal.domain.Country;
-import ru.javarush.module4.projecthibernatefinal.domain.CountryLanguage;
+import ru.javarush.module4.projecthibernatefinal.entity.City;
+import ru.javarush.module4.projecthibernatefinal.entity.Country;
+import ru.javarush.module4.projecthibernatefinal.entity.CountryLanguage;
 
 import java.util.Properties;
 

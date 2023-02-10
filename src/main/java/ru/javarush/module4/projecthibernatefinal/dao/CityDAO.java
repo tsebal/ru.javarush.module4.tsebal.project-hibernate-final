@@ -2,11 +2,11 @@ package ru.javarush.module4.projecthibernatefinal.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import ru.javarush.module4.projecthibernatefinal.domain.City;
+import ru.javarush.module4.projecthibernatefinal.entity.City;
 
 import java.util.List;
 
-public class CityDAO {
+public class CityDAO implements CityDAOImpl {
     private final SessionFactory sessionFactory;
 
     public CityDAO(SessionFactory sessionFactory) {

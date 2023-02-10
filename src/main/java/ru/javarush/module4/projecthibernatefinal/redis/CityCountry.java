@@ -1,6 +1,6 @@
 package ru.javarush.module4.projecthibernatefinal.redis;
 
-import ru.javarush.module4.projecthibernatefinal.domain.Continent;
+import ru.javarush.module4.projecthibernatefinal.entity.Continent;
 
 import java.math.BigDecimal;
 import java.util.Set;
