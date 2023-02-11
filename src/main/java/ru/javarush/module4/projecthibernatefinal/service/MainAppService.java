@@ -13,12 +13,14 @@ import ru.javarush.module4.projecthibernatefinal.dao.CityDAO;
 import ru.javarush.module4.projecthibernatefinal.dao.CountryDAO;
 import ru.javarush.module4.projecthibernatefinal.entity.City;
 import ru.javarush.module4.projecthibernatefinal.entity.Country;
+import ru.javarush.module4.projecthibernatefinal.entity.CountryLanguage;
 import ru.javarush.module4.projecthibernatefinal.redis.CityCountry;
 import ru.javarush.module4.projecthibernatefinal.utils.MainAppSessionFactory;
 import ru.javarush.module4.projecthibernatefinal.utils.RedisClientProvider;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.Objects.nonNull;
 
@@ -73,6 +75,17 @@ public class MainAppService {
         }
     }
 
+    public void testMySqlData(List<Integer> ids) {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            session.beginTransaction();
+            for (Integer id : ids) {
+                City city = cityDAO.getById(id).orElseThrow();
+                Set<CountryLanguage> languages = city.getCountry().getLanguages();
+            }
+            session.getTransaction().commit();
+        }
+    }
+
     public void testRedisData(List<Integer> ids) {
         try (StatefulRedisConnection<String, String> connection = redisClient.connect()) {
             RedisStringCommands<String, String> sync = connection.sync();
@@ -95,5 +108,9 @@ public class MainAppService {
         if (nonNull(redisClient)) {
             redisClient.shutdown();
         }
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 }

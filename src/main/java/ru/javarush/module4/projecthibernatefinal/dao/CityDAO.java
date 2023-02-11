@@ -5,12 +5,19 @@ import org.hibernate.query.Query;
 import ru.javarush.module4.projecthibernatefinal.entity.City;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CityDAO implements CityDAOImpl {
     private final SessionFactory sessionFactory;
 
     public CityDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+    }
+
+    public Optional<City> getById(Integer id) {
+        Query<City> query = sessionFactory.getCurrentSession().createQuery("from City c join fetch c.country where c.id = :ID", City.class);
+        query.setParameter("ID", id);
+        return Optional.of(query.getSingleResult());
     }
 
     public List<City> getItems(int offset, int limit) {
