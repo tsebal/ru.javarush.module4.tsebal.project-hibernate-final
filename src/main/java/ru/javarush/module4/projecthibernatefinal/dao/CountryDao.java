@@ -4,7 +4,6 @@ import ru.javarush.module4.projecthibernatefinal.entity.Country;
 
 import java.util.List;
 
-public interface CountryDAOImpl {
-
+public interface CountryDao {
     List<Country> findAll();
 }

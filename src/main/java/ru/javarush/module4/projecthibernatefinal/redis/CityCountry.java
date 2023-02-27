@@ -3,7 +3,9 @@ package ru.javarush.module4.projecthibernatefinal.redis;
 import ru.javarush.module4.projecthibernatefinal.entity.Continent;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.Set;
+import java.util.StringJoiner;
 
 public class CityCountry {
     private Integer id;
@@ -124,5 +126,47 @@ public class CityCountry {
 
     public void setLanguages(Set<Language> languages) {
         this.languages = languages;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CityCountry that = (CityCountry) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(district, that.district) &&
+                Objects.equals(population, that.population) &&
+                Objects.equals(countryCode, that.countryCode) &&
+                Objects.equals(alternativeCountryCode, that.alternativeCountryCode) &&
+                Objects.equals(countryName, that.countryName) &&
+                continent == that.continent &&
+                Objects.equals(countryRegion, that.countryRegion) &&
+                Objects.equals(countrySurfaceArea, that.countrySurfaceArea) &&
+                Objects.equals(countryPopulation, that.countryPopulation) &&
+                Objects.equals(languages, that.languages);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, district, population, countryCode, alternativeCountryCode, countryName, continent, countryRegion, countrySurfaceArea, countryPopulation, languages);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", CityCountry.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .add("district='" + district + "'")
+                .add("population=" + population)
+                .add("countryCode='" + countryCode + "'")
+                .add("alternativeCountryCode='" + alternativeCountryCode + "'")
+                .add("countryName='" + countryName + "'")
+                .add("continent=" + continent)
+                .add("countryRegion='" + countryRegion + "'")
+                .add("countrySurfaceArea=" + countrySurfaceArea)
+                .add("countryPopulation=" + countryPopulation)
+                .add("languages=" + languages)
+                .toString();
     }
 }

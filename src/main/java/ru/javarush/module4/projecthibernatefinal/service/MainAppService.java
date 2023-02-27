@@ -9,8 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.javarush.module4.projecthibernatefinal.dao.CityDAO;
-import ru.javarush.module4.projecthibernatefinal.dao.CountryDAO;
+import ru.javarush.module4.projecthibernatefinal.dao.CityHibernateDao;
+import ru.javarush.module4.projecthibernatefinal.dao.CountryHibernateDao;
 import ru.javarush.module4.projecthibernatefinal.entity.City;
 import ru.javarush.module4.projecthibernatefinal.entity.Country;
 import ru.javarush.module4.projecthibernatefinal.entity.CountryLanguage;
@@ -25,21 +25,22 @@ import java.util.Set;
 import static java.util.Objects.nonNull;
 
 public class MainAppService {
-
     private static final Logger logger = LoggerFactory.getLogger(MainAppService.class);
 
     private final ObjectMapper mapper;
+
     private final SessionFactory sessionFactory;
+
     private final RedisClient redisClient;
 
-    private final CityDAO cityDAO;
-    private final CountryDAO countryDAO;
+    private final CityHibernateDao cityDAO;
+
+    private final CountryHibernateDao countryDAO;
 
     public MainAppService() {
         sessionFactory = MainAppSessionFactory.getSessionFactory();
-        cityDAO = new CityDAO(sessionFactory);
-        countryDAO = new CountryDAO(sessionFactory);
-
+        cityDAO = new CityHibernateDao(sessionFactory);
+        countryDAO = new CountryHibernateDao(sessionFactory);
         redisClient = RedisClientProvider.prepareRedisClient();
         mapper = new ObjectMapper();
     }

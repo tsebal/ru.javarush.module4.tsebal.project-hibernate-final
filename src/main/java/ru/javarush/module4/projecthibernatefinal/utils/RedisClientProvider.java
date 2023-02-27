@@ -6,9 +6,13 @@ import io.lettuce.core.api.StatefulRedisConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RedisClientProvider {
+public final class RedisClientProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(RedisClientProvider.class);
+
+    private RedisClientProvider() {
+    }
+
     public static RedisClient prepareRedisClient() {
         RedisClient redisClient = RedisClient.create(RedisURI.create("localhost", 6379));
         try (StatefulRedisConnection<String, String> connection = redisClient.connect()) {

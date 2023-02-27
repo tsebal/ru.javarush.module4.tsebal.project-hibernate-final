@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class RedisDataMapper {
+public final class RedisDataMapper {
+    private RedisDataMapper() {
+    }
 
     public static List<CityCountry> transformData(List<City> cities) {
         return cities.stream().map(city -> {

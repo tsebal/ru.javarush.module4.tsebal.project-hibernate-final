@@ -9,7 +9,7 @@ import ru.javarush.module4.projecthibernatefinal.entity.CountryLanguage;
 
 import java.util.Properties;
 
-public class MainAppSessionFactory {
+public final class MainAppSessionFactory {
     private static MainAppSessionFactory instance;
     private final SessionFactory sessionFactory;
 

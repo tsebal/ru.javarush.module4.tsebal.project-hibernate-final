@@ -11,6 +11,8 @@ import jakarta.persistence.Table;
 import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
+import java.util.Objects;
+import java.util.StringJoiner;
 
 @Entity
 @Table(schema = "world", name = "country_language")
@@ -72,5 +74,29 @@ public class CountryLanguage {
 
     public void setPercentage(BigDecimal percentage) {
         this.percentage = percentage;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CountryLanguage that = (CountryLanguage) o;
+        return id.equals(that.id) && Objects.equals(language, that.language) && Objects.equals(isOfficial, that.isOfficial) && Objects.equals(percentage, that.percentage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, language, isOfficial, percentage);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", CountryLanguage.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("country=" + country)
+                .add("language='" + language + "'")
+                .add("isOfficial=" + isOfficial)
+                .add("percentage=" + percentage)
+                .toString();
     }
 }

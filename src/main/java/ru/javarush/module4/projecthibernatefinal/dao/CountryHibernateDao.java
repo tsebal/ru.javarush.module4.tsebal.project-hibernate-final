@@ -6,10 +6,10 @@ import ru.javarush.module4.projecthibernatefinal.entity.Country;
 
 import java.util.List;
 
-public class CountryDAO implements CountryDAOImpl {
+public class CountryHibernateDao implements CountryDao {
     private final SessionFactory sessionFactory;
 
-    public CountryDAO(SessionFactory sessionFactory) {
+    public CountryHibernateDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 

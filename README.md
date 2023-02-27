@@ -16,7 +16,7 @@ The installation and startup process:
    for MySQL: localhost and port 3306;
 
    for Redis: localhost and port 6379
-3. Load dump-hibernate-final.sql from the resources folder of the project into the MySQL database using standard tools (for example, the MySQL Workbench import function).
+3. Load dump of the project into the MySQL database using standard tools (for example, the MySQL Workbench import function).
 4. Take advantage.
 
 The program uses a sample of 10 random cities. You can change any values for testing by yourself.

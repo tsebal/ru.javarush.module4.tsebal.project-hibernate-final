@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MainApp {
-
     public static void main(String[] args) {
         MainAppService mainAppService = new MainAppService();
         List<City> allCities = mainAppService.fetchAllCitiesData();

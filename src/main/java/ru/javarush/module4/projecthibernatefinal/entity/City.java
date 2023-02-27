@@ -9,6 +9,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import java.util.Objects;
+import java.util.StringJoiner;
+
 @Entity
 @Table(schema = "world", name = "city")
 public class City {
@@ -67,5 +70,33 @@ public class City {
 
     public void setPopulation(Integer population) {
         this.population = population;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return id.equals(city.id) &&
+                Objects.equals(name, city.name) &&
+                Objects.equals(country, city.country) &&
+                Objects.equals(district, city.district) &&
+                Objects.equals(population, city.population);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, country, district, population);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", City.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .add("country=" + country)
+                .add("district='" + district + "'")
+                .add("population=" + population)
+                .toString();
     }
 }
